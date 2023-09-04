@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\SiswaModels;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+use function PHPSTORM_META\override;
+
 class SiswaController extends Controller
 {
     public function index()
@@ -15,14 +18,21 @@ class SiswaController extends Controller
 
     public function create(Request $request)
     {
-        return view('siswa.tambah');
+        $jurusan = DB::table('jurusans')->get();
+        return view('siswa.tambah', compact('jurusan'));
     }
 
     public function store(Request $request)
     {
-        SiswaModels::create($request->except(['_token']));
-        return redirect('/siswa');
+        $validasi = $request->validate([
+            'nama' => "required|max:255",
+            'jurusan_id' => "required",
+            'kelas' => 'required',
+            'nisn' => 'required'
 
+        ]);
+        SiswaModels::create($validasi);
+        return redirect('/siswa');
     }
 
     public function show($id)
@@ -54,5 +64,10 @@ class SiswaController extends Controller
         $siswa = SiswaModels::findOrFail($id);
         $siswa->delete();
         return redirect('/siswa');
+    }
+
+    public function jurusan()
+    {
+        return view('jurusan.tambah');
     }
 }

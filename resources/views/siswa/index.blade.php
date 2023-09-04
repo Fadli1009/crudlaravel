@@ -16,7 +16,7 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->nama }}</td>
-                <td>{{ $item->jurusan }}</td>
+                <td>{{ $item->jurusan_id }}</td>
                 <td>{{ $item->kelas }}</td>
                 <td>{{ $item->nisn }}</td>
                 <td class="d-flex"><a href="{{ route('siswa.edit',$item->id) }}" class="btn btn-warning me-4">Edit</a> 

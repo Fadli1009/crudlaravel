@@ -8,11 +8,21 @@
           </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Masukan Jurusan Siswa</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name="jurusan">
+            <select class="form-select" aria-label="Default select example" name="jurusan_id">
+              <option selected>Open this select menu</option>
+              @foreach ($jurusan as $item)
+                  <option value="{{ $item->id }}">{{ $item->namajurusan }}</option>
+              @endforeach
+            </select>
           </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Kelas Siswa</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name="kelas">
+            <select class="form-select" aria-label="Default select example" name='kelas'>
+              <option selected>Open this select menu</option>
+              <option value="Kelas X">Kelas X</option>
+              <option value="Kelas XI">Kelas XI</option>
+              <option value="Kelas XII">Kelas XII</option>
+            </select>
           </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nisn Siswa</label>
