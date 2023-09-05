@@ -32,7 +32,7 @@ class SiswaController extends Controller
 
         ]);
         SiswaModels::create($validasi);
-        return redirect('/siswa');
+        return redirect('/siswa')->with('succes', 'Siswa berhasil di tambahkan');
     }
 
     public function show($id)
@@ -42,8 +42,10 @@ class SiswaController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $jurusan = DB::table('jurusans')->get();
+
         $siswa = SiswaModels::findOrFail($id);
-        return view('siswa.edit', compact(['siswa']));
+        return view('siswa.edit', compact(['siswa', 'jurusan']));
     }
 
     public function update(Request $request, $id)
@@ -51,12 +53,12 @@ class SiswaController extends Controller
         $siswa = SiswaModels::findOrFail($id);
         $valid = $request->validate([
             'nama' => 'required',
-            'jurusan' => "required",
+            'jurusan_id' => "required|integer",
             'kelas' => 'required',
             'nisn' => 'required'
         ]);
         $siswa->update($valid);
-        return redirect('/siswa');
+        return redirect('/siswa')->with('succes', 'Berhasil mengupdate siswa');
     }
 
     public function destroy($id, Request $request)
@@ -66,8 +68,4 @@ class SiswaController extends Controller
         return redirect('/siswa');
     }
 
-    public function jurusan()
-    {
-        return view('jurusan.tambah');
-    }
 }

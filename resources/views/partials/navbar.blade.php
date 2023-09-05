@@ -1,22 +1,19 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Siswa</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('siswa.index') }}">Home</a>
+            <a class="nav-link @yield('home-active')" aria-current="page" href="{{ route('siswa.index') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('siswa.create') }}">Tambah</a>
+            <a class="nav-link @yield('tambah-active')" href="{{ route('siswa.create') }}">Tambah</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('jurusan.index') }}">Jurusan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Kelas</a>
+            <a class="nav-link @yield('jurusan-active')" href="{{ route('jurusan.index') }}">Jurusan</a>
           </li>
         </ul>
       </div>
