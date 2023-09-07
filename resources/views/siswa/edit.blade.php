@@ -1,4 +1,4 @@
-@extends('base.base')
+@extends('layouts.app')
 @section('content')
     <form action="{{ route('siswa.update',$siswa->id) }}" method="post">
         @csrf

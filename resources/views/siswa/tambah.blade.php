@@ -1,4 +1,4 @@
-@extends('base.base')
+@extends('layouts.app')
 @section('title','Tambah Siswa')
 @section('tambah-active','active')
 @section('content')

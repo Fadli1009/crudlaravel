@@ -1,4 +1,4 @@
-@extends('base.base')
+@extends('layouts.app')
 @section('content')
     <form action="{{ route('jurusan.update', $jurusan->id) }}" method="post">
         @method('put')

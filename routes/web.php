@@ -15,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('siswa', SiswaController::class);
-Route::resource('jurusan', JurusanController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('siswa', SiswaController::class);
+    Route::resource('jurusan', JurusanController::class);
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
